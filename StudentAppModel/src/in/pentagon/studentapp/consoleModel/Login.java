@@ -56,7 +56,7 @@ public class Login {
 			            	System.out.println(s1);;
 			            }
 			    	break;
-			    case 7: //delete()
+			    case 7: Delete.delete();
 			    	break;
 			    default: System.out.println("Invalid choice, Enter valid choice");
 			    break;

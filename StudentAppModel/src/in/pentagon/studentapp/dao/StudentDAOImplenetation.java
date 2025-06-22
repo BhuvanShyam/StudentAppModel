@@ -67,8 +67,22 @@ public class StudentDAOImplenetation implements StudentDAO {
 
 	@Override
 	public boolean deleteStudent(int id) {
-		// TODO Auto-generated method stub
+		String query = "DELETE FROM STUDENT WHERE ID = ?";
+		PreparedStatement ps = null;
+		try {
+			ps = con.prepareStatement(query);
+			ps.setInt(1, id);
+			int res = ps.executeUpdate();
+			if(res>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		return false;
+		
+		
 	}
 
 	@Override
@@ -76,8 +90,6 @@ public class StudentDAOImplenetation implements StudentDAO {
 		Student s = null;
 		String query = "SELECT * FROM STUDENT WHERE MAIL = ? AND PASSWORD = ?";
 		PreparedStatement ps = null;
-		Connection con = null;
-		con = Connector.requestConnection();
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement(query);
